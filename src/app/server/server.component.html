@@ -1,7 +1,47 @@
 <h4>This is a Component Example. </h4>
+
+
+
+<hr>
+<div class="game">
+
+  <h4> This is a cooking game. Enjoy! </h4>
+
+  <div style="margin-top: 20px;">
+    <i>Add ingredients :</i>
+  </div>
+
+    <input #newIngre
+         (keyup.enter)="addIngredient(newIngre.value)"
+         (blur)="addIngredient(newIngre.value); newIngre.value='' ">
+
+    <button class="btn btn-primary" (click)="addIngredient(newIngre.value)" style="margin-left: 20px; margin-right: 10px"> Add </button>
+    <button class="btn btn-primary" (click)="cookDish()" style="margin-left: 10px; margin-right: 10px"> Cook </button>
+    <button class="btn btn-primary" (click)="emptyBasket()" style="margin-left: 10px; margin-right: 10px"> Reset </button>
+
+
+  <div><span style="margin-top: 20px">Ingredients in basket:</span>
+    <ul><li *ngFor="let ingredient of ingredients">{{ingredient}}</li></ul>
+
+  </div>
+
+  <div *ngIf="isReady" >
+    Congrat! you can cook: <span style = "color: blue">{{ dishName }}</span>
+  </div>
+
+  <div *ngIf="notReady" >
+    <h5>Can't cook anything!</h5>
+  </div>
+
+</div>
+
+
+<hr>
 <p> Server with ID {{ serverId }}  is {{ serverStatus }} </p>
 <p> {{ 'Server' }} with ID {{ serverId }}  is {{ serverStatus }} </p>
-<p> {{ 'Server' }} with ID {{ serverId }}  is {{ getServerStatus() }} </p>
+<p>
+
+  {{ 'Server' }} with ID {{ serverId }}  is {{ getServerStatus() }} </p>
 
 <hr>
 <h4>This is a counter</h4>
@@ -35,6 +75,7 @@
   <span>Password: </span>
   <input type="password">
 </div>
+
 <div *ngIf="isLogin" class="informBoxBoarder"> You Loggedin as {{ userName }} </div>
 <button class="btn btn-light" (click)="login()" style="margin-right: 10px"> Login </button>
 <button class="btn btn-light" (click)="signOut()"> Sign Out </button>
@@ -48,3 +89,5 @@
     <div><span style="color: cornflowerblue; margin-right: 5px;">Student Major: </span> <span>{{ student.major }}</span></div>
   </div>
 </div>
+
+
